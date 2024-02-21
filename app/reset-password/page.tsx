@@ -6,6 +6,8 @@ import type { NextPage } from "next";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Mail, Loader2, RotateCcw } from "lucide-react";
+import { toast } from "sonner";
 
 const ForgotPasswordPage: NextPage = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +16,7 @@ const ForgotPasswordPage: NextPage = () => {
   const [successfulCreation, setSuccessfulCreation] = useState(false);
   const [secondFactor, setSecondFactor] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
   const { isSignedIn } = useAuth();
@@ -23,15 +26,16 @@ const ForgotPasswordPage: NextPage = () => {
     return null;
   }
 
-  // If the user is already signed in,
-  // redirect them to the home page
   if (isSignedIn) {
+    toast.success("Mot de passe réinitialiser, vous êtes connecté");
     router.push("/dashboard");
   }
 
-  // Send the password reset code to the user's email
   async function create(e: React.FormEvent) {
     e.preventDefault();
+
+    setIsLoading(true);
+
     await signIn
       ?.create({
         strategy: "reset_password_email_code",
@@ -43,15 +47,18 @@ const ForgotPasswordPage: NextPage = () => {
       })
       .catch((err) => {
         console.error("error", err.errors[0].longMessage);
+
         setError(err.errors[0].longMessage);
+        toast.error("Votre adresse email est incorrect !");
       });
+    setIsLoading(false);
   }
 
-  // Reset the user's password.
-  // Upon successful reset, the user will be
-  // signed in and redirected to the home page
   async function reset(e: React.FormEvent) {
     e.preventDefault();
+
+    setIsLoading(true);
+
     await signIn
       ?.attemptFirstFactor({
         strategy: "reset_password_email_code",
@@ -64,8 +71,6 @@ const ForgotPasswordPage: NextPage = () => {
           setSecondFactor(true);
           setError("");
         } else if (result.status === "complete") {
-          // Set the active session to
-          // the newly created session (user is now logged in)
           setActive({ session: result.createdSessionId });
           setError("");
         } else {
@@ -74,8 +79,11 @@ const ForgotPasswordPage: NextPage = () => {
       })
       .catch((err) => {
         console.error("error", err.errors[0].longMessage);
+        toast.error("Code incorrect ou expiré");
         setError(err.errors[0].longMessage);
       });
+
+    setIsLoading(false);
   }
 
   return (
@@ -96,7 +104,14 @@ const ForgotPasswordPage: NextPage = () => {
                 className="mb-4"
               />
 
-              <Button>Envoyer le code de réinitialisation</Button>
+              <Button disabled={isLoading} className="gap-2">
+                {isLoading ? (
+                  <Loader2 size="16" className="animate-spin" />
+                ) : (
+                  <Mail size="16" />
+                )}
+                Envoyer le code de réinitialisation
+              </Button>
               {error && (
                 <p className="text-red-500 mt-2">
                   Entrez une adresse email valide.
@@ -130,7 +145,14 @@ const ForgotPasswordPage: NextPage = () => {
                   onChange={(e) => setCode(e.target.value)}
                 />
 
-                <Button className="mt-4">Réinitialiser</Button>
+                <Button disabled={isLoading} className="mt-4 gap-2">
+                  {isLoading ? (
+                    <RotateCcw size="16" className="animate-spin" />
+                  ) : (
+                    <Mail size="16" />
+                  )}
+                  Réinitialiser
+                </Button>
                 {error && <p className="text-red-500 mt-2">Entrez le code</p>}
               </div>
             </>
@@ -148,18 +170,3 @@ const ForgotPasswordPage: NextPage = () => {
 };
 
 export default ForgotPasswordPage;
-
-{
-  /**
-   * style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1em",
-        }}
-
-         style={{
-        margin: "auto",
-        maxWidth: "500px",
-      }}
-   */
-}

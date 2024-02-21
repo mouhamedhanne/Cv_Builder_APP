@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { toast } from "sonner";
+import { Loader2, LogIn, VerifiedIcon } from "lucide-react";
 
 import { useState } from "react";
 import { useSignUp } from "@clerk/nextjs";
@@ -24,7 +26,14 @@ export default function SignUpPage() {
   const [password, setPassword] = useState("");
   const [pendingVerification, setPendingVerification] = useState(false);
   const [code, setCode] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  const validationPassword = () => {
+    if (password.length < 8) {
+      toast.error("Le mot de passe doit continir 8 carateres");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +41,8 @@ export default function SignUpPage() {
     if (!isLoaded) {
       return;
     }
+
+    setIsLoading(true);
 
     try {
       await signUp.create({
@@ -41,13 +52,13 @@ export default function SignUpPage() {
         password,
       });
 
-      // send the email.
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
 
-      // change the UI to our pending section.
       setPendingVerification(true);
     } catch (err) {
       console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,6 +66,15 @@ export default function SignUpPage() {
     e.preventDefault();
     if (!isLoaded) {
       return;
+    }
+
+    if (code.trim() === "") {
+      toast.error("Le champs de verification ne peut pas être vide.");
+      return;
+    }
+
+    if (code.length !== 6) {
+      toast.error("Le code doit contenir 6 caractères");
     }
 
     try {
@@ -66,9 +86,11 @@ export default function SignUpPage() {
       }
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
+        toast.success("Vérification réussi, vous êtes connecté !");
         router.push("/dashboard");
       }
     } catch (err) {
+      toast.error("le code est invalide");
       console.error(JSON.stringify(err, null, 2));
     }
   };
@@ -140,14 +162,24 @@ export default function SignUpPage() {
             </div>
 
             <CardFooter className="mt-6 flex justify-center">
-              <Button type="submit" className="gap-2">
+              <Button
+                onClick={validationPassword}
+                type="submit"
+                disabled={isLoading}
+                className="gap-2"
+              >
+                {isLoading ? (
+                  <Loader2 size="16" className="animate-spin" />
+                ) : (
+                  <LogIn size="16" />
+                )}
                 Créer un compte
               </Button>
             </CardFooter>
             <div className="flex gap-2 items-center justify-center">
               <p>Vous avez un compte?</p>
               <Link href="/sign-in" className="text-blue-700">
-                Sign-In
+                Connexion
               </Link>
             </div>
           </Card>
@@ -162,7 +194,16 @@ export default function SignUpPage() {
               value={code}
               onChange={(e) => setCode(e.target.value)}
             />
-            <Button type="submit" onClick={onPressVerify} className="mt-3">
+            <Button
+              type="submit"
+              onClick={onPressVerify}
+              className="mt-3 gap-2"
+            >
+              {isLoading ? (
+                <Loader2 size="16" className="animate-spin" />
+              ) : (
+                <VerifiedIcon size="16" />
+              )}
               Vérifier votre Email
             </Button>
           </div>

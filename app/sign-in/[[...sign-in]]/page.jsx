@@ -10,24 +10,31 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { LogIn } from "lucide-react";
+import { Loader2, LogIn } from "lucide-react";
 import Link from "next/link";
 
 import { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { Toaster } from "sonner";
+import { toast } from "sonner";
 
 export default function SignInPage() {
   const { isLoaded, signIn, setActive } = useSignIn();
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isLoaded) {
       return;
+    }
+
+    setIsLoading(true);
+
+    if (password.length < 8) {
+      toast.error("Le mot de passe doit continir 8 carateres");
     }
 
     try {
@@ -37,15 +44,18 @@ export default function SignInPage() {
       });
 
       if (result.status === "complete") {
-        console.log(result);
         await setActive({ session: result.createdSessionId });
+        toast.success("Connexion réussi !");
         router.push("/dashboard");
       } else {
         /*Investigate why the login hasn't completed */
         console.log(result);
       }
     } catch (err) {
+      toast.error("Adresse email ou mot de passe incorrect !");
       console.error("error", err.errors[0].longMessage);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -93,14 +103,19 @@ export default function SignInPage() {
         </div>
 
         <CardFooter className="mt-6 flex justify-center">
-          <Button onClick={handleSubmit} className="gap-2">
-            <LogIn size="16" /> Se Connecter
+          <Button onClick={handleSubmit} disabled={isLoading} className="gap-2">
+            {isLoading ? (
+              <Loader2 size="16" className="animate-spin" />
+            ) : (
+              <LogIn size="16" />
+            )}
+            Se Connecter
           </Button>
         </CardFooter>
         <div className="flex gap-2 items-center justify-center">
           <p>Vous n'avez de compte?</p>
           <Link href="/sign-up" className="text-blue-700">
-            Sign-In
+            Inscription
           </Link>
         </div>
       </Card>
