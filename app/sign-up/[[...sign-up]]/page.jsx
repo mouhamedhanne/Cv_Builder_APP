@@ -62,7 +62,6 @@ export default function SignUpPage() {
         code,
       });
       if (completeSignUp.status !== "complete") {
-        
         console.log(JSON.stringify(completeSignUp, null, 2));
       }
       if (completeSignUp.status === "complete") {
@@ -83,15 +82,13 @@ export default function SignUpPage() {
         >
           <Card className="px-[4rem] py-3">
             <CardHeader>
-              <CardTitle className="">Create Account</CardTitle>
-              <CardDescription className="">
-                Create Your Account
-              </CardDescription>
+              <CardTitle className="">Créer un compte</CardTitle>
+              <CardDescription className="">Créez votre compte</CardDescription>
             </CardHeader>
             <CardContent></CardContent>
             <div className="mb-4">
               <label htmlFor="first_name" className="block mb-2">
-                First Name
+                Prénom
               </label>
               <Input
                 placeholder="John"
@@ -104,7 +101,7 @@ export default function SignUpPage() {
             </div>
             <div className="mb-4">
               <label htmlFor="last_name" className="block mb-2">
-                Last Name
+                Nom de famille
               </label>
               <Input
                 placeholder="Doe"
@@ -117,7 +114,7 @@ export default function SignUpPage() {
             </div>
             <div className="mb-4">
               <label htmlFor="email" className="block mb-2">
-                Email Address
+                Adresse Email
               </label>
               <Input
                 placeholder="exemple@exemple.com"
@@ -130,7 +127,7 @@ export default function SignUpPage() {
             </div>
             <div>
               <label htmlFor="password" className="block mb-2">
-                Password
+                Mot de passe
               </label>
               <Input
                 placeholder="********"
@@ -144,12 +141,12 @@ export default function SignUpPage() {
 
             <CardFooter className="mt-6 flex justify-center">
               <Button type="submit" className="gap-2">
-                Create Account
+                Créer un compte
               </Button>
             </CardFooter>
             <div className="flex gap-2 items-center justify-center">
-              <p>Have an account?</p>
-              <Link href="/sign-in" className="m-0 text-blue-700">
+              <p>Vous avez un compte?</p>
+              <Link href="/sign-in" className="text-blue-700">
                 Sign-In
               </Link>
             </div>
@@ -159,14 +156,16 @@ export default function SignUpPage() {
 
       {pendingVerification && (
         <form className="h-screen w-screen flex justify-center items-center">
-          <Input
-            placeholder="Enter Verification Code..."
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-          />
-          <Button type="submit" onClick={onPressVerify}>
-            Verify Email
-          </Button>
+          <div className="block">
+            <Input
+              placeholder="Entrez le code de vérification..."
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+            <Button type="submit" onClick={onPressVerify} className="mt-3">
+              Vérifier votre Email
+            </Button>
+          </div>
         </form>
       )}
     </>
