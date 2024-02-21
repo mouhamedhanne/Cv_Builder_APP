@@ -11,10 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { LogIn } from "lucide-react";
+import Link from "next/link";
 
 import { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { Toaster } from "sonner";
 
 export default function SignInPage() {
   const { isLoaded, signIn, setActive } = useSignIn();
@@ -51,8 +53,10 @@ export default function SignInPage() {
     <form className="h-screen w-screen flex justify-center items-center">
       <Card className="px-12 py-3">
         <CardHeader>
-          <CardTitle className="">Login</CardTitle>
-          <CardDescription className="">Login to dashboard</CardDescription>
+          <CardTitle className="">Se Connecter</CardTitle>
+          <CardDescription className="">
+            Connectez-vous au tableau de bord
+          </CardDescription>
         </CardHeader>
         <CardContent></CardContent>
         <div className="mb-4">
@@ -69,7 +73,7 @@ export default function SignInPage() {
         </div>
         <div>
           <label htmlFor="password" className="block mb-2">
-            Password
+            Mot de passe
           </label>
           <Input
             placeholder="********"
@@ -79,12 +83,26 @@ export default function SignInPage() {
             type="password"
           />
         </div>
+        <div>
+          <Link
+            href="/reset-password"
+            className=" mt-2 text-sm flex justify-end underline hover:text-blue-700"
+          >
+            Mot de passe oublié?
+          </Link>
+        </div>
 
         <CardFooter className="mt-6 flex justify-center">
           <Button onClick={handleSubmit} className="gap-2">
-            <LogIn size="16" /> Login
+            <LogIn size="16" /> Se Connecter
           </Button>
         </CardFooter>
+        <div className="flex gap-2 items-center justify-center">
+          <p>Vous n'avez de compte?</p>
+          <Link href="/sign-up" className="text-blue-700">
+            Sign-In
+          </Link>
+        </div>
       </Card>
     </form>
   );
