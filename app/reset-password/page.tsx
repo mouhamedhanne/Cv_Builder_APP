@@ -147,9 +147,9 @@ const ForgotPasswordPage: NextPage = () => {
 
                 <Button disabled={isLoading} className="mt-4 gap-2">
                   {isLoading ? (
-                    <RotateCcw size="16" className="animate-spin" />
+                    <Loader2 size="16" className="animate-spin" />
                   ) : (
-                    <Mail size="16" />
+                    <RotateCcw size="16" />
                   )}
                   Réinitialiser
                 </Button>
