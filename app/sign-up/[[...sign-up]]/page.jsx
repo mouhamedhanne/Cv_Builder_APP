@@ -31,7 +31,7 @@ export default function SignUpPage() {
 
   const validationPassword = () => {
     if (password.length < 8) {
-      toast.error("Le mot de passe doit continir 8 carateres");
+      toast.error("Le mot de passe doit continir 8 caractères");
     }
   };
 
@@ -69,7 +69,7 @@ export default function SignUpPage() {
     }
 
     if (code.trim() === "") {
-      toast.error("Le champs de verification ne peut pas être vide.");
+      toast.error("Le champs de vérification ne peut pas être vide.");
       return;
     }
 
