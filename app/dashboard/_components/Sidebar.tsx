@@ -1,13 +1,11 @@
 "use client";
 
 import {
-  BellIcon,
+  Component,
   Cookie,
-  CreditCard,
-  Inbox,
+  MessageCircleQuestion,
   MessageSquare,
   Settings,
-  User,
 } from "lucide-react";
 import UserItems from "@/app/dashboard/_components/UserItem";
 import {
@@ -16,6 +14,11 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import LogoDashboardLight from "@/public/assets/Images/logo-dashboard-light-mode.png";
+import Image from "next/image";
+import { Home } from "lucide-react";
+import { IconeCv } from "@/components/logo/page";
+import Link from "next/link";
 
 export default function Sidebar() {
   const menuList = [
@@ -24,23 +27,23 @@ export default function Sidebar() {
       items: [
         {
           link: "/",
-          icon: <User />,
-          text: "Profile",
+          icon: <Home />,
+          text: "Home",
         },
         {
           link: "/",
-          icon: <Inbox />,
-          text: "Inbox",
+          icon: <IconeCv />,
+          text: "Build CV",
         },
         {
           link: "/",
-          icon: <CreditCard />,
-          text: "Billing",
+          icon: <Component />,
+          text: "Models CV",
         },
         {
           link: "/",
-          icon: <BellIcon />,
-          text: "Notifications",
+          icon: <MessageCircleQuestion />,
+          text: "Aide & FAQ",
         },
       ],
     },
@@ -49,18 +52,18 @@ export default function Sidebar() {
       items: [
         {
           link: "/",
-          icon: <Settings />,
-          text: "General Settings",
+          icon: <MessageSquare />,
+          text: "Support",
         },
         {
           link: "/",
           icon: <Cookie />,
-          text: "Privacy",
+          text: "Confidentialité",
         },
         {
-          link: "/",
-          icon: <MessageSquare />,
-          text: "Logs",
+          link: "/dashboard/profile",
+          icon: <Settings />,
+          text: "Réglages",
         },
       ],
     },
@@ -70,7 +73,7 @@ export default function Sidebar() {
     //fixed
     <div className="fixed flex flex-col gap-4 w-[300px] min-w-[300px] border-r min-h-screen p-4">
       <div>
-        <h3 className="text-[20px] font-bold">LOGO</h3>
+        <Image src={LogoDashboardLight} alt="logo dashboard" width={50} />
       </div>
       <div className="grow">
         <Command style={{ overflow: "visible" }}>
@@ -90,9 +93,6 @@ export default function Sidebar() {
             ))}
           </CommandList>
         </Command>
-      </div>
-      <div className="flex gap-2 cursor-pointer">
-        <Settings /> Settings
       </div>
       <div>
         <UserItems />

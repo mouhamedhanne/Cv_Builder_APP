@@ -1,15 +1,24 @@
-import Logo from "@/public/assets/Images/cv-builder1.png";
+import LogoPage from "@/public/assets/Images/logo-landing-page.png";
 import Image from "next/image";
 import Link from "next/link";
+import Icone from "@/public/assets/Images/curriculum-vitae.png";
 
-export default function page() {
+export const Logo = () => {
   return (
     <>
       <div>
         <Link href="/">
-          <Image src={Logo} alt="logo" />
+          <Image src={LogoPage} alt="logo landing page" />
         </Link>
       </div>
     </>
   );
-}
+};
+
+export const IconeCv = () => {
+  return (
+    <>
+      <Image src={Icone} alt="icone cv" width={25} />
+    </>
+  );
+};
