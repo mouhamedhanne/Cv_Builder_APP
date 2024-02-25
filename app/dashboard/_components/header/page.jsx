@@ -1,31 +1,64 @@
 "use client";
 //import Link from "next/link";
-import Logo from "@/components/logo/page";
+
 //import { Button } from "@/components/ui/button";
-import { UserButton } from "@clerk/nextjs";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { LogOut, User } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
 
 function page() {
-  //const { userId } = auth();
+  const { isSignedIn, user, isLoaded } = useUser();
 
-  return (
-    <header>
-      <nav
-        className=" bg-white opacity-95 shadow border-gray-200
-         fixed w-full z-20 top-0 left-0 border-b border-gray-200
-         pt-[1.2rem] pb-2"
-      >
-        <div className="flex justify-between items-center mx-7">
-          <div>
-            <Logo />
-          </div>
+  if (!isLoaded) {
+    return null;
+  }
 
-          <div className="flex items-center justify-center space-x-3">
-            <UserButton afterSignOutUrl="/" />
+  if (isSignedIn && user && user.fullName) {
+    return (
+      <header>
+        <nav className="">
+          <div className="w-full grid grid-cols-2 gap-4 p-4 border-b">
+            <h1>Home</h1>
+
+            <div className="flex items-center justify-end">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Avatar>
+                    <AvatarImage src={user.imageUrl} alt={user.fullName} />
+                    <AvatarFallback>
+                      <User size="16" />
+                    </AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>Mon Compte</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+
+                  <DropdownMenuItem>Notifications</DropdownMenuItem>
+                  <DropdownMenuItem>Notez nous</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="text-destructive hover:!text-destructive">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Déconnexion</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
-  );
+        </nav>
+      </header>
+    );
+  }
 }
 
 export default page;

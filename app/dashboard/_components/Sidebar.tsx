@@ -6,6 +6,7 @@ import {
   MessageCircleQuestion,
   MessageSquare,
   Settings,
+  Bell,
 } from "lucide-react";
 import UserItems from "@/app/dashboard/_components/UserItem";
 import {
@@ -42,6 +43,11 @@ export default function Sidebar() {
         },
         {
           link: "/",
+          icon: <Bell />,
+          text: "Notifications",
+        },
+        {
+          link: "/",
           icon: <MessageCircleQuestion />,
           text: "Aide & FAQ",
         },
@@ -70,8 +76,7 @@ export default function Sidebar() {
   ];
 
   return (
-    //fixed
-    <div className="fixed flex flex-col gap-4 w-[300px] min-w-[300px] border-r min-h-screen p-4">
+    <div className="fixed flex flex-col gap-4 w-[300px] min-w-[300px] p-4 min-h-screen">
       <div>
         <Image src={LogoDashboardLight} alt="logo dashboard" width={50} />
       </div>
