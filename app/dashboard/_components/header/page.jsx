@@ -1,7 +1,4 @@
 "use client";
-//import Link from "next/link";
-
-//import { Button } from "@/components/ui/button";
 
 import {
   DropdownMenu,
@@ -13,10 +10,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { LogOut, User } from "lucide-react";
+import { useClerk } from "@clerk/clerk-react";
+import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 function page() {
   const { isSignedIn, user, isLoaded } = useUser();
+
+  const { signOut } = useClerk();
+  const router = useRouter();
 
   if (!isLoaded) {
     return null;
@@ -42,14 +46,21 @@ function page() {
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Mon Compte</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/dashboard/profile">Profile</Link>
+                  </DropdownMenuItem>
 
                   <DropdownMenuItem>Notifications</DropdownMenuItem>
                   <DropdownMenuItem>Notez nous</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="text-destructive hover:!text-destructive">
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Déconnexion</span>
+                  <DropdownMenuItem>
+                    <Button
+                      onClick={() => signOut(() => router.push("/"))}
+                      variant="destructive"
+                    >
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Déconnexion</span>
+                    </Button>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
