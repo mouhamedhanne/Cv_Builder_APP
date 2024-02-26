@@ -48,7 +48,6 @@ export default function SignInPage() {
         toast.success("Connexion réussi !");
         router.push("/dashboard");
       } else {
-        /*Investigate why the login hasn't completed */
         console.log(result);
       }
     } catch (err) {
