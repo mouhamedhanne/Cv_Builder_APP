@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { LogOut, User } from "lucide-react";
+import { LogOut, User, Bell } from "lucide-react";
 import { useClerk } from "@clerk/clerk-react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
@@ -46,11 +46,19 @@ function page() {
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Mon Compte</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Link href="/dashboard/profile">Profile</Link>
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard/profile">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Profile</span>
+                    </Link>
                   </DropdownMenuItem>
 
-                  <DropdownMenuItem>Notifications</DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="notifications">
+                      <Bell className="mr-2 h-4 w-4" />
+                      <span>Notifications</span>
+                    </Link>
+                  </DropdownMenuItem>
                   <DropdownMenuItem>Notez nous</DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>

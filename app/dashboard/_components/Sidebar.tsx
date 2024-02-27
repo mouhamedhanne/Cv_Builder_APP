@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Component,
   Cookie,
   MessageCircleQuestion,
   MessageSquare,
@@ -27,19 +26,14 @@ export default function Sidebar() {
       group: "General",
       items: [
         {
-          link: "/",
+          link: "/dashboard",
           icon: <Home />,
           text: "Home",
         },
         {
-          link: "/",
+          link: "/dashboard/build-cv",
           icon: <IconeCv />,
-          text: "Build CV",
-        },
-        {
-          link: "/",
-          icon: <Component />,
-          text: "Models CV",
+          text: "Créer un CV",
         },
         {
           link: "/",
@@ -90,8 +84,13 @@ export default function Sidebar() {
                     key={optionKey}
                     className="flex gap-2 cursor-pointer"
                   >
-                    {option.icon}
-                    {option.text}
+                    <Link
+                      href={option.link}
+                      className="flex items-center gap-2"
+                    >
+                      {option.icon}
+                      {option.text}
+                    </Link>
                   </CommandItem>
                 ))}
               </CommandGroup>
