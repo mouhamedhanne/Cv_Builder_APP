@@ -10,8 +10,8 @@ function page() {
   return (
     <header>
       <nav
-        className=" bg-white opacity-95 shadow border-gray-200
-         fixed w-full z-20 top-0 left-0 border-b border-gray-200
+        className="bg-white opacity-95 shadow border-gray-200
+          w-full z-20 top-0 left-0 border-b border-gray-200
          py-[1.2rem]"
       >
         <div className="flex justify-between items-center mx-7">
