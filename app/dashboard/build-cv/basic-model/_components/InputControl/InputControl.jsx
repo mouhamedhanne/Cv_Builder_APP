@@ -1,14 +1,13 @@
 "use client";
 
-import React from "react";
-
+import { Input } from "@/components/ui/input";
 import styles from "./InputControl.module.css";
 
 function InputControl({ label, ...props }) {
   return (
     <div className={styles.container}>
       {label && <label>{label}</label>}
-      <input type="text" {...props} />
+      <Input type="text" {...props} />
     </div>
   );
 }

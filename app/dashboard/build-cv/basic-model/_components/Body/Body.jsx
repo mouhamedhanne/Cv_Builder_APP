@@ -12,13 +12,13 @@ import styles from "./Body.module.css";
 function Body() {
   const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
   const sections = {
-    basicInfo: "Basic Info",
-    workExp: "Work Experience",
-    project: "Projects",
-    education: "Education",
-    achievement: "Achievements",
-    summary: "Summary",
-    other: "Other",
+    basicInfo: "Informations de Base",
+    workExp: "Expérience Professionnelle",
+    project: "Projets",
+    education: "Éducation",
+    achievement: "Réalisations",
+    summary: "Résumé",
+    other: "Autre",
   };
   const resumeRef = useRef();
 
