@@ -5,10 +5,11 @@ import { X } from "react-feather";
 import InputControl from "@/app/dashboard/build-cv/basic-model/_components/InputControl/InputControl";
 import styles from "./Editor.module.css";
 import { Button } from "@/components/ui/button";
+import { Save } from "lucide-react";
 
 function Editor(props) {
   const [includeLinkedIn, setIncludeLinkedIn] = useState(true);
-  const [includeGitHub, setIncludeGitHub] = useState(true);
+  const [includeGitHub, setIncludeGitHub] = useState(false);
 
   const sections = props.sections;
   const information = props.information;
@@ -292,6 +293,7 @@ function Editor(props) {
 
       <div className={styles.row}>
         <label>Inclure LinkedIn:</label>
+
         <input
           type="checkbox"
           checked={includeLinkedIn}
@@ -660,7 +662,7 @@ function Editor(props) {
           {activeInformation?.details &&
           activeInformation?.details?.length > 0 ? (
             <div className={styles.new} onClick={handleAddNew}>
-              +New
+              +Nouveau
             </div>
           ) : (
             ""
@@ -668,7 +670,9 @@ function Editor(props) {
         </div>
 
         {generateBody()}
-        <Button onClick={handleSubmission}>Sauvegarder</Button>
+        <Button onClick={handleSubmission} className="gap-2">
+          <Save size="16" /> Sauvegarder
+        </Button>
       </div>
     </div>
   );
