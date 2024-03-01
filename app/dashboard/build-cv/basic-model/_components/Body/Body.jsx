@@ -8,6 +8,8 @@ import Editor from "@/app/dashboard/build-cv/basic-model/_components/Editor/Edit
 import Resume from "@/app/dashboard/build-cv/basic-model/_components/Resume/Resume";
 
 import styles from "./Body.module.css";
+import { Button } from "@/components/ui/button";
+import { ArrowBigDown } from "lucide-react";
 
 function Body() {
   const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
@@ -63,7 +65,7 @@ function Body() {
 
   return (
     <div className={styles.container}>
-      <p className={styles.heading}>Resume Builder</p>
+      <p className={styles.heading}>Basic Model</p>
       <div className={styles.toolbar}>
         <div className={styles.colors}>
           {colors.map((item) => (
@@ -80,9 +82,9 @@ function Body() {
         <ReactToPrint
           trigger={() => {
             return (
-              <button>
-                Download <ArrowDown />
-              </button>
+              <Button className="gap-2">
+                Télécharger <ArrowBigDown size="16" />
+              </Button>
             );
           }}
           content={() => resumeRef.current}
