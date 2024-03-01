@@ -1,13 +1,15 @@
 "use client";
+
 import { useState, useEffect } from "react";
-
 import { X } from "react-feather";
-
 import InputControl from "@/app/dashboard/build-cv/basic-model/_components/InputControl/InputControl";
-
 import styles from "./Editor.module.css";
+import { Button } from "@/components/ui/button";
 
 function Editor(props) {
+  const [includeLinkedIn, setIncludeLinkedIn] = useState(true);
+  const [includeGitHub, setIncludeGitHub] = useState(true);
+
   const sections = props.sections;
   const information = props.information;
 
@@ -41,16 +43,16 @@ function Editor(props) {
     <div className={styles.detail}>
       <div className={styles.row}>
         <InputControl
-          label="Title"
-          placeholder="Enter title eg. Frontend developer"
+          label="Titre"
+          placeholder="Entrez le titre, ex: Développeur web"
           value={values.title}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, title: event.target.value }))
           }
         />
         <InputControl
-          label="Company Name"
-          placeholder="Enter company name eg. amazon"
+          label="Nom de l'entreprise"
+          placeholder="Entrez le nom de l'entreprise"
           value={values.companyName}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, companyName: event.target.value }))
@@ -59,8 +61,8 @@ function Editor(props) {
       </div>
       <div className={styles.row}>
         <InputControl
-          label="Certificate Link"
-          placeholder="Enter certificate link"
+          label="Lien du certificat"
+          placeholder="Entrez le lien du certificat"
           value={values.certificationLink}
           onChange={(event) =>
             setValues((prev) => ({
@@ -70,8 +72,8 @@ function Editor(props) {
           }
         />
         <InputControl
-          label="Location"
-          placeholder="Enter location eg. Remote"
+          label="Emplacement"
+          placeholder="Entrez l'emplacement"
           value={values.location}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, location: event.target.value }))
@@ -80,18 +82,18 @@ function Editor(props) {
       </div>
       <div className={styles.row}>
         <InputControl
-          label="Start Date"
+          label="Date de début"
           type="date"
-          placeholder="Enter start date of work"
+          placeholder="Entrez la date de début"
           value={values.startDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, startDate: event.target.value }))
           }
         />
         <InputControl
-          label="End Date"
+          label="Date de fin"
           type="date"
-          placeholder="Enter end date of work"
+          placeholder="Entrez la date de fin"
           value={values.endDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, endDate: event.target.value }))
@@ -100,7 +102,7 @@ function Editor(props) {
       </div>
 
       <div className={styles.column}>
-        <label>Enter work description</label>
+        <label>Entrez la description du travail</label>
         <InputControl
           placeholder="Line 1"
           value={values.points ? values.points[0] : ""}
@@ -123,42 +125,42 @@ function Editor(props) {
     <div className={styles.detail}>
       <div className={styles.row}>
         <InputControl
-          label="Title"
+          label="Titre"
           value={values.title}
-          placeholder="Enter title eg. Chat app"
+          placeholder="Enter le titre"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, title: event.target.value }))
           }
         />
       </div>
       <InputControl
-        label="Overview"
+        label="Aperçu"
         value={values.overview}
-        placeholder="Enter basic overview of project"
+        placeholder="Entrez un aperçu de base du projet"
         onChange={(event) =>
           setValues((prev) => ({ ...prev, overview: event.target.value }))
         }
       />
       <div className={styles.row}>
         <InputControl
-          label="Deployed Link"
+          label="Lien déployé"
           value={values.link}
-          placeholder="Enter deployed link of project"
+          placeholder="Entrez le lien déployé du projet"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, link: event.target.value }))
           }
         />
         <InputControl
-          label="Github Link"
+          label="Lien Github"
           value={values.github}
-          placeholder="Enter github link of project"
+          placeholder="Entrez le lien github du projet"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, github: event.target.value }))
           }
         />
       </div>
       <div className={styles.column}>
-        <label>Enter project description</label>
+        <label>Entrez la description du projet</label>
         <InputControl
           placeholder="Line 1"
           value={values.points ? values.points[0] : ""}
@@ -186,36 +188,36 @@ function Editor(props) {
     <div className={styles.detail}>
       <div className={styles.row}>
         <InputControl
-          label="Title"
+          label="Titre"
           value={values.title}
-          placeholder="Enter title eg. B-tech"
+          placeholder="Entrez le titre ex: Master"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, title: event.target.value }))
           }
         />
       </div>
       <InputControl
-        label="College/School Name"
+        label="Nom du collège/école"
         value={values.college}
-        placeholder="Enter name of your college/school"
+        placeholder="Entrez le nom de votre collège/école"
         onChange={(event) =>
           setValues((prev) => ({ ...prev, college: event.target.value }))
         }
       />
       <div className={styles.row}>
         <InputControl
-          label="Start Date"
+          label="Date de début"
           type="date"
-          placeholder="Enter start date of this education"
+          placeholder="Entrez la date de début de cette formation"
           value={values.startDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, startDate: event.target.value }))
           }
         />
         <InputControl
-          label="End Date"
+          label="Date de fin"
           type="date"
-          placeholder="Enter end date of this education"
+          placeholder="Entrez la date de fin de cette formation"
           value={values.endDate}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, endDate: event.target.value }))
@@ -228,64 +230,89 @@ function Editor(props) {
     <div className={styles.detail}>
       <div className={styles.row}>
         <InputControl
-          label="Name"
-          placeholder="Enter your full name eg. Aashu"
+          label="Nom"
+          placeholder="Entrez votre nom complet"
           value={values.name}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, name: event.target.value }))
           }
         />
         <InputControl
-          label="Title"
+          label="Titre"
           value={values.title}
-          placeholder="Enter your title eg. Frontend developer"
+          placeholder="Entrez votre titre"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, title: event.target.value }))
           }
         />
       </div>
-      <div className={styles.row}>
-        <InputControl
-          label="Linkedin Link"
-          value={values.linkedin}
-          placeholder="Enter your linkedin profile link"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, linkedin: event.target.value }))
-          }
-        />
-        <InputControl
-          label="Github Link"
-          value={values.github}
-          placeholder="Enter your github profile link"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, github: event.target.value }))
-          }
-        />
-      </div>
+
       <div className={styles.row}>
         <InputControl
           label="Email"
           value={values.email}
-          placeholder="Enter your email"
+          placeholder="Entrer votre Email"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
         />
         <InputControl
-          label="Enter phone"
+          label="Entrez le téléphone"
           value={values.phone}
-          placeholder="Enter your phone number"
+          placeholder="Entrez votre numéro de téléphone"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, phone: event.target.value }))
           }
         />
       </div>
+
+      <div className={styles.row}>
+        {includeLinkedIn && (
+          <InputControl
+            label="Lien Linkedin"
+            value={values.linkedin}
+            placeholder="Entrez le lien de votre linkedIn"
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, linkedin: event.target.value }))
+            }
+          />
+        )}
+
+        {includeGitHub && (
+          <InputControl
+            label="Lien GitHub"
+            value={values.github}
+            placeholder="Entrez le lien de votre github"
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, github: event.target.value }))
+            }
+          />
+        )}
+      </div>
+
+      <div className={styles.row}>
+        <label>Inclure LinkedIn:</label>
+        <input
+          type="checkbox"
+          checked={includeLinkedIn}
+          onChange={() => setIncludeLinkedIn((prev) => !prev)}
+        />
+      </div>
+      <div className={styles.row}>
+        <label>Inclure GitHub :</label>
+        <input
+          type="checkbox"
+          checked={includeGitHub}
+          onChange={() => setIncludeGitHub((prev) => !prev)}
+        />
+      </div>
     </div>
   );
+
   const achievementsBody = (
     <div className={styles.detail}>
       <div className={styles.column}>
-        <label>List your achievements</label>
+        <label>Entrez la description du travail</label>
         <InputControl
           placeholder="Line 1"
           value={values.points ? values.points[0] : ""}
@@ -301,20 +328,15 @@ function Editor(props) {
           value={values.points ? values.points[2] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 2)}
         />
-        <InputControl
-          placeholder="Line 4"
-          value={values.points ? values.points[3] : ""}
-          onChange={(event) => handlePointUpdate(event.target.value, 3)}
-        />
       </div>
     </div>
   );
   const summaryBody = (
     <div className={styles.detail}>
       <InputControl
-        label="Summary"
+        label="Résumé"
         value={values.summary}
-        placeholder="Enter your objective/summary"
+        placeholder="Entrez votre objectif/résumé"
         onChange={(event) =>
           setValues((prev) => ({ ...prev, summary: event.target.value }))
         }
@@ -324,9 +346,9 @@ function Editor(props) {
   const otherBody = (
     <div className={styles.detail}>
       <InputControl
-        label="Other"
+        label="Autre"
         value={values.other}
-        placeholder="Enter something"
+        placeholder="Entrez quelque chose"
         onChange={(event) =>
           setValues((prev) => ({ ...prev, other: event.target.value }))
         }
@@ -646,11 +668,104 @@ function Editor(props) {
         </div>
 
         {generateBody()}
-
-        <button onClick={handleSubmission}>Save</button>
+        <Button onClick={handleSubmission}>Sauvegarder</Button>
       </div>
     </div>
   );
 }
 
 export default Editor;
+
+{
+  /**
+const basicInfoBody = (
+    <div className={styles.detail}>
+      <div className={styles.row}>
+        <InputControl
+          label="Name"
+          placeholder="Enter your full name eg. Aashu"
+          value={values.name}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, name: event.target.value }))
+          }
+        />
+        <InputControl
+          label="Title"
+          value={values.title}
+          placeholder="Enter your title eg. Frontend developer"
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, title: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl
+          label="Linkedin Link"
+          value={values.linkedin}
+          placeholder="Enter your linkedin profile link"
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, linkedin: event.target.value }))
+          }
+        />
+        <InputControl
+          label="Github Link"
+          value={values.github}
+          placeholder="Enter your github profile link"
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, github: event.target.value }))
+          }
+        />
+      </div>
+      <div className={styles.row}>
+        <InputControl
+          label="Email"
+          value={values.email}
+          placeholder="Enter your email"
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, email: event.target.value }))
+          }
+        />
+        <InputControl
+          label="Enter phone"
+          value={values.phone}
+          placeholder="Enter your phone number"
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, phone: event.target.value }))
+          }
+        />
+      </div>
+    </div>
+  );
+ */
+}
+
+{
+  /**
+   * 
+   * <div className={styles.column}>
+        <label>Entrez la description du travail</label>
+        <InputControl
+          placeholder="Line 1"
+          value={values.points ? values.points[0] : ""}
+          onChange={(event) => handlePointUpdate(event.target.value, 0)}
+        />
+        <InputControl
+          placeholder="Line 2"
+          value={values.points ? values.points[1] : ""}
+          onChange={(event) => handlePointUpdate(event.target.value, 1)}
+        />
+        <InputControl
+          placeholder="Line 3"
+          value={values.points ? values.points[2] : ""}
+          onChange={(event) => handlePointUpdate(event.target.value, 2)}
+        />
+      </div>
+
+        const handlePointUpdate = (value, index) => {
+    const tempValues = { ...values };
+    if (!Array.isArray(tempValues.points)) tempValues.points = [];
+    tempValues.points[index] = value;
+    setValues(tempValues);
+  };
+   */
+}

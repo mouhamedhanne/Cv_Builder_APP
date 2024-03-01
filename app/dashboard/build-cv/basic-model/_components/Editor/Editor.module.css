@@ -37,8 +37,8 @@
 }
 
 .header .active {
-  border-bottom: 2px solid #239ce2;
-  color: #239ce2;
+  border-bottom: 2px solid #0f172a;
+  color: #ed8936;
 }
 
 .body {
@@ -108,7 +108,8 @@
   background-color: #239ce2;
 }
 
-.body button {
+/**
+body button {
   width: fit-content;
   padding: 8px 16px;
   border-radius: 5px;
@@ -129,3 +130,5 @@
 .body button:active {
   transform: translateY(2px);
 }
+
+*/
