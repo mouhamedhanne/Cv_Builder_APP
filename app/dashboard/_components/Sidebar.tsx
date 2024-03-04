@@ -70,37 +70,43 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="fixed flex flex-col gap-4 w-[300px] min-w-[300px] p-4 min-h-screen">
-      <div>
-        <Image src={LogoDashboardLight} alt="logo dashboard" width={50} />
-      </div>
-      <div className="grow">
-        <Command style={{ overflow: "visible" }}>
-          <CommandList style={{ overflow: "visible" }}>
-            {menuList.map((menu: any, key: number) => (
-              <CommandGroup key={key} heading={menu.group}>
-                {menu.items.map((option: any, optionKey: number) => (
-                  <CommandItem
-                    key={optionKey}
-                    className="flex gap-2 cursor-pointer"
-                  >
-                    <Link
-                      href={option.link}
-                      className="flex items-center gap-2"
-                    >
-                      {option.icon}
-                      {option.text}
-                    </Link>
-                  </CommandItem>
+    <>
+      <div className={``}>
+        <div
+          className={`fixed flex flex-col gap-4 w-[300px] min-w-[300px] p-4 min-h-screen`}
+        >
+          <div>
+            <Image src={LogoDashboardLight} alt="logo dashboard" width={50} />
+          </div>
+          <div className="grow">
+            <Command style={{ overflow: "visible" }}>
+              <CommandList style={{ overflow: "visible" }}>
+                {menuList.map((menu: any, key: number) => (
+                  <CommandGroup key={key} heading={menu.group}>
+                    {menu.items.map((option: any, optionKey: number) => (
+                      <CommandItem
+                        key={optionKey}
+                        className="flex gap-2 cursor-pointer"
+                      >
+                        <Link
+                          href={option.link}
+                          className="flex items-center gap-2"
+                        >
+                          {option.icon}
+                          {option.text}
+                        </Link>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
                 ))}
-              </CommandGroup>
-            ))}
-          </CommandList>
-        </Command>
+              </CommandList>
+            </Command>
+          </div>
+          <div>
+            <UserItems />
+          </div>
+        </div>
       </div>
-      <div>
-        <UserItems />
-      </div>
-    </div>
+    </>
   );
 }

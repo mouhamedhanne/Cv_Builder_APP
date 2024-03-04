@@ -15,6 +15,8 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import LogoDashboardLight from "@/public/assets/Images/logo-dashboard-light-mode.png";
+import Image from "next/image";
 
 function page() {
   const { isSignedIn, user, isLoaded } = useUser();
@@ -30,8 +32,14 @@ function page() {
     return (
       <header>
         <nav className="">
-          <div className="w-full grid grid-cols-2 gap-4 p-4 border-b">
-            <h1>Home</h1>
+          <div className="w-full grid grid-cols-2 gap-4 p-4 border-b items-center">
+            <Image
+              src={LogoDashboardLight}
+              alt="logo dashboard"
+              width={50}
+              className="lg:hidden ml-[9rem]"
+            />
+            <h1 className="hidden lg:block">Home</h1>
 
             <div className="flex items-center justify-end">
               <DropdownMenu>
