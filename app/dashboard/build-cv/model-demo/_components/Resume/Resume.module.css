@@ -13,6 +13,19 @@
   padding: 30px;
 }
 
+.container_second {
+  min-width: 700px;
+  max-width: 850px;
+  margin: 0 auto;
+  flex: 1.2;
+  height: fit-content;
+  min-height: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+}
+
 .header {
   display: flex;
   flex-direction: column;

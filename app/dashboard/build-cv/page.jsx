@@ -7,10 +7,7 @@ export default function page() {
     <>
       <Header />
       <div className="h-screen w- screen flex justify-center items-center">
-        <div className="flex gap-4">
-          <Link href="/dashboard/build-cv/model-demo">
-            <Button>Model demo</Button>
-          </Link>
+        <div className="flex ">
           <Link href="/dashboard/build-cv/basic-model">
             <Button>Basic model</Button>
           </Link>
