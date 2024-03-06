@@ -36,12 +36,12 @@ export default function Sidebar() {
           text: "Créer un CV",
         },
         {
-          link: "/",
+          link: "/dashboard",
           icon: <Bell />,
           text: "Notifications",
         },
         {
-          link: "/",
+          link: "/dashboard",
           icon: <MessageCircleQuestion />,
           text: "Aide & FAQ",
         },
@@ -51,12 +51,12 @@ export default function Sidebar() {
       group: "Settings",
       items: [
         {
-          link: "/",
+          link: "/dashboard",
           icon: <MessageSquare />,
           text: "Support",
         },
         {
-          link: "/",
+          link: "/dashboard",
           icon: <Cookie />,
           text: "Confidentialité",
         },
