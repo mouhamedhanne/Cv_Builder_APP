@@ -4,9 +4,11 @@ import Herotop from "@/components/herotop/page";
 export default function page() {
   return (
     <>
-      <Navigation />
-      <div className="">
-        <Herotop />
+      <div className="bg-home_page">
+        <Navigation />
+        <div className="">
+          <Herotop />
+        </div>
       </div>
     </>
   );
