@@ -19,6 +19,8 @@ const config = {
     },
     extend: {
       colors: {
+        home_page: "#212121",
+        home_secondary: "#FF4F01",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
