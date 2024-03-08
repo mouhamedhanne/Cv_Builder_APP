@@ -36,7 +36,7 @@ function page() {
             <Image
               src={LogoDashboardLight}
               alt="logo dashboard"
-              width={50}
+              width={70}
               className="lg:hidden ml-[9rem]"
             />
             <h1 className="hidden lg:block">Home</h1>

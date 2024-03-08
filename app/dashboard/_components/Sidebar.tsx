@@ -76,7 +76,7 @@ export default function Sidebar() {
           className={`fixed flex flex-col gap-4 w-[300px] min-w-[300px] p-4 min-h-screen`}
         >
           <div>
-            <Image src={LogoDashboardLight} alt="logo dashboard" width={50} />
+            <Image src={LogoDashboardLight} alt="logo dashboard" width={70} />
           </div>
           <div className="grow">
             <Command style={{ overflow: "visible" }}>

@@ -1,4 +1,4 @@
-import LogoPage from "@/public/assets/Images/logo-landing-page.png";
+import LogoPage from "@/public/assets/Images/landing-page.png";
 import Image from "next/image";
 import Link from "next/link";
 import Icone from "@/public/assets/Images/curriculum-vitae.png";
