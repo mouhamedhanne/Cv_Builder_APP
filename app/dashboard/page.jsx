@@ -11,7 +11,7 @@ export default function page() {
   if (!isLoaded) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <Loader2 className="animate-spin text-red-600" size="32" />
+        <Loader2 className="animate-spin text-[#FF4F01]" size="32" />
       </div>
     );
   }

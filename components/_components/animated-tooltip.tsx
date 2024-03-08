@@ -48,15 +48,4 @@ export default function AnimatedTooltipPreview() {
   );
 }
 
-{
-  /**
-import { StaticImageData } from "next/image";
 
-interface Person {
-  id: number;
-  name: string;
-  designation: string;
-  image: StaticImageData;
-}
- */
-}

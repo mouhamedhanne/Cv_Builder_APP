@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo/page";
 import { Button } from "@/components/ui/button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { LogIn } from "lucide-react";
 
 function page() {
@@ -17,15 +15,11 @@ function page() {
           </div>
 
           <div className="flex items-center justify-center space-x-3">
-            <Link href="https://github.com/mouhamedhanne" target="_blank">
-              {" "}
-              <FontAwesomeIcon
-                icon={faGithub}
-                className="text-3xl hidden lg:block"
-              />
-            </Link>
             <Link href="/sign-in">
-              <Button className="bg-home_secondary hover:bg-home_secondary gap-2">
+              <Button
+                className="bg-home_secondary hover:bg-home_secondary gap-2
+               hover:opacity-90"
+              >
                 Login <LogIn size="16" />
               </Button>
             </Link>
