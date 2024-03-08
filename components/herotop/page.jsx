@@ -4,6 +4,7 @@ import CVBuilder from "@/public/assets/Images/cv-basic.png";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import AnimatedTooltipPreview from "@/components/_components/animated-tooltip";
+import Link from "next/link";
 
 export default function page() {
   return (
@@ -31,9 +32,11 @@ export default function page() {
         </div>
 
         <div className="flex justify-center items-center mt-4 hover:opacity-90">
-          <Button className="bg-home_secondary hover:bg-home_secondary rounded-[1rem]">
-            Essayer Gratuitement
-          </Button>
+          <Link href="/sign-in">
+            <Button className="bg-home_secondary hover:bg-home_secondary rounded-[1rem]">
+              Essayer Gratuitement
+            </Button>
+          </Link>
         </div>
 
         <div className="mt-5">

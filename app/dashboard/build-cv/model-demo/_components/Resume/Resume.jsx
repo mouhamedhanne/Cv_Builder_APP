@@ -10,8 +10,6 @@ import {
   Paperclip,
   Phone,
 } from "react-feather";
-import Image from "next/image";
-import John from "@/public/assets/Images/john.png";
 
 import styles from "./Resume.module.css";
 
