@@ -116,9 +116,9 @@ export default function SignInPage() {
             Se Connecter
           </Button>
         </CardFooter>
-        <div className="flex gap-2 items-center justify-center">
-          <p>Vous n'avez de compte?</p>
-          <Link href="/sign-up" className="text-blue-700">
+        <div className="flex gap-2 items-center justify-center ">
+          <p className="text-[14px]">Vous n'avez de compte?</p>
+          <Link href="/sign-up" className="text-blue-700 text-[14px]">
             Inscription
           </Link>
         </div>
