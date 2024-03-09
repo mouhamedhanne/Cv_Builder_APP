@@ -28,6 +28,7 @@ export default function page() {
   );
 }
 
+// add basic template
 export const BasicTemplate = () => {
   return (
     <div>

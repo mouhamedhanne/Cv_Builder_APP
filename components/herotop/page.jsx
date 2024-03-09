@@ -39,7 +39,7 @@ export default function page() {
           </Link>
         </div>
 
-        <div className="mt-5">
+        <div className="mt-5 flex justify-center items-center">
           <AnimatedTooltipPreview />
         </div>
 
