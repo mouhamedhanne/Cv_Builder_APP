@@ -28,7 +28,7 @@ export default function page() {
   );
 }
 
-export const BasicTemplate = () => {
+const BasicTemplate = () => {
   return (
     <div>
       <Link href="/dashboard/build-cv/basic-model">
@@ -53,7 +53,6 @@ const Skeleton = () => (
 const items = [
   {
     title: "Basic Model 🔥",
-
     header: <BasicTemplate />,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
