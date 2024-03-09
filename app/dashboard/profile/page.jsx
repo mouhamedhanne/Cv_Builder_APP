@@ -1,7 +1,6 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
-import Image from "next/image";
 import { Loader2, User, ChevronRight } from "lucide-react";
 import {
   Card,
@@ -51,8 +50,12 @@ export default function page() {
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <Button variant="ghost" className="gap-2">
-                    Update profile <ChevronRight size="16" />
+                  <Button
+                    variant="ghost"
+                    className="gap-2 text-home_secondary hover:bg-home_secondary hover:text-white"
+                  >
+                    Update profile
+                    <ChevronRight size="16" className="" />
                   </Button>
                 </div>
               </div>
@@ -90,7 +93,6 @@ export default function page() {
             </p>
           </CardFooter>
         </Card>
-        <h1 className="text-[23px] font-bold">Hello {user.fullName}!</h1>
       </div>
     );
   }

@@ -82,7 +82,7 @@ function Body() {
         <ReactToPrint
           trigger={() => {
             return (
-              <Button className="gap-2">
+              <Button className="gap-2 bg-home_secondary hover:bg-home_secondary hover:opacity-90">
                 Télécharger <ArrowBigDown size="16" />
               </Button>
             );

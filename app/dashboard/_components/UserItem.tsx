@@ -1,12 +1,17 @@
 import { useUser } from "@clerk/nextjs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function UserItems() {
   const { isSignedIn, user, isLoaded } = useUser();
 
   if (!isLoaded) {
-    return null;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader2 className="animate-spin text-[#FF4F01]" size="32" />
+      </div>
+    );
   }
 
   if (isSignedIn && user && user.fullName) {
