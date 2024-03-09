@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import LogoDashboardLight from "@/public/assets/Images/logo-dashboard-light-mode.png";
 import Image from "next/image";
+import { Loader2 } from "lucide-react";
 
 function page() {
   const { isSignedIn, user, isLoaded } = useUser();
@@ -25,7 +26,11 @@ function page() {
   const router = useRouter();
 
   if (!isLoaded) {
-    return null;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader2 className="animate-spin text-[#FF4F01]" size="32" />
+      </div>
+    );
   }
 
   if (isSignedIn && user && user.fullName) {
@@ -39,7 +44,9 @@ function page() {
               width={70}
               className="lg:hidden ml-[9rem]"
             />
-            <h1 className="hidden lg:block">Home</h1>
+            <h1 className="hidden lg:block text-home_secondary font-extrabold">
+              CV BUILDER
+            </h1>
 
             <div className="flex items-center justify-end">
               <DropdownMenu>
@@ -67,7 +74,7 @@ function page() {
                       <span>Notifications</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>Notez nous</DropdownMenuItem>
+
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <Button

@@ -670,7 +670,11 @@ function Editor(props) {
         </div>
 
         {generateBody()}
-        <Button onClick={handleSubmission} className="gap-2">
+        <Button
+          onClick={handleSubmission}
+          className="gap-2 bg-home_secondary
+          hover:bg-home_secondary hover:opacity-90"
+        >
           <Save size="16" /> Sauvegarder
         </Button>
       </div>
@@ -679,97 +683,3 @@ function Editor(props) {
 }
 
 export default Editor;
-
-{
-  /**
-const basicInfoBody = (
-    <div className={styles.detail}>
-      <div className={styles.row}>
-        <InputControl
-          label="Name"
-          placeholder="Enter your full name eg. Aashu"
-          value={values.name}
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, name: event.target.value }))
-          }
-        />
-        <InputControl
-          label="Title"
-          value={values.title}
-          placeholder="Enter your title eg. Frontend developer"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, title: event.target.value }))
-          }
-        />
-      </div>
-      <div className={styles.row}>
-        <InputControl
-          label="Linkedin Link"
-          value={values.linkedin}
-          placeholder="Enter your linkedin profile link"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, linkedin: event.target.value }))
-          }
-        />
-        <InputControl
-          label="Github Link"
-          value={values.github}
-          placeholder="Enter your github profile link"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, github: event.target.value }))
-          }
-        />
-      </div>
-      <div className={styles.row}>
-        <InputControl
-          label="Email"
-          value={values.email}
-          placeholder="Enter your email"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-        />
-        <InputControl
-          label="Enter phone"
-          value={values.phone}
-          placeholder="Enter your phone number"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, phone: event.target.value }))
-          }
-        />
-      </div>
-    </div>
-  );
- */
-}
-
-{
-  /**
-   * 
-   * <div className={styles.column}>
-        <label>Entrez la description du travail</label>
-        <InputControl
-          placeholder="Line 1"
-          value={values.points ? values.points[0] : ""}
-          onChange={(event) => handlePointUpdate(event.target.value, 0)}
-        />
-        <InputControl
-          placeholder="Line 2"
-          value={values.points ? values.points[1] : ""}
-          onChange={(event) => handlePointUpdate(event.target.value, 1)}
-        />
-        <InputControl
-          placeholder="Line 3"
-          value={values.points ? values.points[2] : ""}
-          onChange={(event) => handlePointUpdate(event.target.value, 2)}
-        />
-      </div>
-
-        const handlePointUpdate = (value, index) => {
-    const tempValues = { ...values };
-    if (!Array.isArray(tempValues.points)) tempValues.points = [];
-    tempValues.points[index] = value;
-    setValues(tempValues);
-  };
-   */
-}

@@ -104,7 +104,11 @@ const ForgotPasswordPage: NextPage = () => {
                 className="mb-4"
               />
 
-              <Button disabled={isLoading} className="gap-2">
+              <Button
+                disabled={isLoading}
+                className="gap-2 bg-home_secondary
+               hover:bg-home_secondary hover:opacity-90"
+              >
                 {isLoading ? (
                   <Loader2 size="16" className="animate-spin" />
                 ) : (
@@ -145,7 +149,11 @@ const ForgotPasswordPage: NextPage = () => {
                   onChange={(e) => setCode(e.target.value)}
                 />
 
-                <Button disabled={isLoading} className="mt-4 gap-2">
+                <Button
+                  disabled={isLoading}
+                  className="mt-4 gap-2 bg-home_secondary
+                  hover:bg-home_secondary hover:opacity-90"
+                >
                   {isLoading ? (
                     <Loader2 size="16" className="animate-spin" />
                   ) : (
