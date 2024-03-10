@@ -2,12 +2,7 @@
 
 import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/Bento";
-import {
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
+import { IconFileBroken, IconSignature } from "@tabler/icons-react";
 import CVBasic from "@/public/assets/Images/cv-basic.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,7 +23,6 @@ export default function page() {
   );
 }
 
-// add basic template
 const BasicTemplate = () => {
   return (
     <div>
