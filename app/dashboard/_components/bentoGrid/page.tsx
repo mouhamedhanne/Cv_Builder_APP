@@ -23,7 +23,7 @@ export default function page() {
   );
 }
 
-//basic template
+
 const BasicTemplate = () => {
   return (
     <div>

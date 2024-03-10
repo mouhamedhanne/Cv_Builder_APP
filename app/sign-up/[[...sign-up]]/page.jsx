@@ -178,8 +178,8 @@ export default function SignUpPage() {
               </Button>
             </CardFooter>
             <div className="flex gap-2 items-center justify-center">
-              <p>Vous avez un compte?</p>
-              <Link href="/sign-in" className="text-blue-700">
+              <p className="text-[14px]">Vous avez un compte?</p>
+              <Link href="/sign-in" className="text-blue-700 text-[14px]">
                 Connexion
               </Link>
             </div>
