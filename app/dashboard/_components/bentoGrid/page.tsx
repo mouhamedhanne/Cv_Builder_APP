@@ -2,12 +2,7 @@
 
 import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/Bento";
-import {
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
+import { IconFileBroken, IconSignature } from "@tabler/icons-react";
 import CVBasic from "@/public/assets/Images/cv-basic.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,8 +23,8 @@ export default function page() {
   );
 }
 
-// add basic template
-export const BasicTemplate = () => {
+
+const BasicTemplate = () => {
   return (
     <div>
       <Link href="/dashboard/build-cv/basic-model">
@@ -54,7 +49,6 @@ const Skeleton = () => (
 const items = [
   {
     title: "Basic Model 🔥",
-
     header: <BasicTemplate />,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
