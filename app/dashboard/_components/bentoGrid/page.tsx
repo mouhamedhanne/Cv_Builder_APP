@@ -19,7 +19,6 @@ export default function page() {
         <BentoGridItem
           key={i}
           title={item.title}
-          description={item.description}
           header={item.header}
           className={item.className}
           icon={item.icon}
@@ -30,7 +29,7 @@ export default function page() {
 }
 
 // add basic template
-export const BasicTemplate = () => {
+const BasicTemplate = () => {
   return (
     <div>
       <Link href="/dashboard/build-cv/basic-model">
@@ -55,14 +54,12 @@ const Skeleton = () => (
 const items = [
   {
     title: "Basic Model 🔥",
-    description: "Dive into the transformative power of technology.",
     header: <BasicTemplate />,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "CV Canadien 🤔🚀",
-    description: "Discover the beauty of thoughtful and functional design.",
     header: <Skeleton />,
     className: "md:col-span-1",
     icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
