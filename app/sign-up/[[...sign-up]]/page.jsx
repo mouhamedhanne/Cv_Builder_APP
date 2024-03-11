@@ -166,7 +166,8 @@ export default function SignUpPage() {
                 onClick={validationPassword}
                 type="submit"
                 disabled={isLoading}
-                className="gap-2"
+                className="gap-2 bg-home_secondary
+                hover:bg-home_secondary hover:opacity-90"
               >
                 {isLoading ? (
                   <Loader2 size="16" className="animate-spin" />
@@ -197,7 +198,8 @@ export default function SignUpPage() {
             <Button
               type="submit"
               onClick={onPressVerify}
-              className="mt-3 gap-2"
+              className="mt-3 gap-2 bg-home_secondary hover:bg-home_secondary
+               hover:opacity-90"
             >
               {isLoading ? (
                 <Loader2 size="16" className="animate-spin" />

@@ -61,7 +61,12 @@ export default function page() {
     return (
       <Dialog open={isDialogOpen} onOpenChange={handleOpenChange}>
         <DialogTrigger asChild>
-          <Button onClick={handleOpen} variant="ghost" className="gap-2">
+          <Button
+            onClick={handleOpen}
+            variant="ghost"
+            className="gap-2 text-home_secondary
+             hover:bg-home_secondary hover:text-white"
+          >
             <ChevronRight size="16" />
           </Button>
         </DialogTrigger>
@@ -74,7 +79,7 @@ export default function page() {
               </DialogDescription>
             </DialogHeader>
             <div>
-              <label className="block mb-2">Nom</label>
+              <label className="block mb-2 mt-3">Nom</label>
               <Input
                 type="text"
                 placeholder="Nouveau nom"
@@ -89,7 +94,12 @@ export default function page() {
               )}
             </div>
             <DialogFooter>
-              <Button disabled={isLoading} type="submit" className="mt-4 gap-2">
+              <Button
+                disabled={isLoading}
+                type="submit"
+                className="mt-4 gap-2 bg-home_secondary
+               hover:bg-home_secondary hover:opacity-90"
+              >
                 {isLoading ? (
                   <Loader2 size="16" className="animate-spin" />
                 ) : (

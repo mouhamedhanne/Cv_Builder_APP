@@ -102,7 +102,12 @@ export default function SignInPage() {
         </div>
 
         <CardFooter className="mt-6 flex justify-center">
-          <Button onClick={handleSubmit} disabled={isLoading} className="gap-2">
+          <Button
+            onClick={handleSubmit}
+            disabled={isLoading}
+            className="gap-2 bg-home_secondary
+            hover:bg-home_secondary hover:opacity-90"
+          >
             {isLoading ? (
               <Loader2 size="16" className="animate-spin" />
             ) : (

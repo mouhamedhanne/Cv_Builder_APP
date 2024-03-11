@@ -1,16 +1,13 @@
 import Header from "@/app/dashboard/_components/header/page";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import BentoGrid from "@/app/dashboard/_components/bentoGrid/page";
 
 export default function page() {
   return (
     <>
       <Header />
-      <div className="h-screen w- screen flex justify-center items-center">
-        <div className="flex ">
-          <Link href="/dashboard/build-cv/basic-model">
-            <Button>Basic model</Button>
-          </Link>
+      <div className="pl-7 pt-3">
+        <div className="">
+          <BentoGrid />
         </div>
       </div>
     </>
