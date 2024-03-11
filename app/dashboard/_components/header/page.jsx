@@ -78,7 +78,7 @@ function page() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <Button
-                      onClick={() => signOut(() => router.push("/"))}
+                      onClick={() => signOut(() => router.push("/sign-in"))}
                       variant="destructive"
                     >
                       <LogOut className="mr-2 h-4 w-4" />
